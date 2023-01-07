@@ -1,29 +1,28 @@
 const express =require("express");
+const cors=require('cors');
 const app=express();
 const fs=require("fs");
-// const harrow=JSON.parse(fs.readFileSync('Harrow.json','utf-8'));
-// const heathrow=JSON.parse(fs.readFileSync('Heathrow.json','utf-8'));
-// const stratford=JSON.parse(fs.readFileSync('Stratford.json','utf-8'));
-const PORT = process.env.PORT || 5000;
 
-// let cities=[harrow,heathrow,stratford]
+app.use(express.json());
+app.use(cors())
 
-app.get("/:city",(req,res)=>{
-    const city=req.params.city;
-    
-    // const cityDetails=cities.find(c=>c==city)
-    res.json(cityDetails);
+const PORT = process.env.PORT || 3000;
+const routes={
+    "/pharmacies":"returns pharmacies list for stratford", 
+  "/colleges" : "returns colleges list for stratford",
+"/doctors" : "returns doctors list for stratford ", 
+"/hospitals": "returns hospitals list for stratford" 
+}
+app.get("/",(req,res)=>{
+    res.send(routes)
 })
 
-// app.get("/colleges",(req,res)=>{
-//     res.json(harrow.colleges);
-// })
+app.get("/:city/:category",(req,res)=>{
+    const cityName=req.params.city;
+    const category=req.params.category;
+    let filePath=__dirname + '/data/' + cityName +'.json';
+    const cityData=JSON.parse(fs.readFileSync(filePath,'utf-8'))
+    res.json(cityData[category]);
+})
 
-// app.get("/hospitals",(req,res)=>{
-//     res.json(harrow.hospitals);
-// })
-
-// app.get("/doctors",(req,res)=>{
-//     res.json(harrow.doctors);
-// })
 app.listen(PORT)

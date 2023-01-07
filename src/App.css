@@ -1,0 +1,18 @@
+.App {
+  text-align: center;
+}
+
+.dropdownMenu {
+  text-align: left;
+  margin-left: 60px;
+}
+
+.dropdownMenu label {
+  margin-right: 10px;
+}
+
+.catagory {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-around;
+}

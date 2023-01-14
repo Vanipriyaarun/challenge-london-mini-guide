@@ -23,7 +23,7 @@ app.get("/",(req,res)=>{
 app.get("/:city/:category",(req,res)=>{
     const cityName=req.params.city;
     const category=req.params.category;
-    let filePath=__dirname + '/data/' + cityName +'.json';
+    let filePath=__dirname + '/src/data/' + cityName +'.json';
     console.log(filePath);
     const cityData=JSON.parse(fs.readFileSync(filePath,'utf-8'))
     res.json(cityData[category]);

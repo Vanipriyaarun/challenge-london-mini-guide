@@ -6,7 +6,7 @@ import React, { useState, useEffect } from "react";
 function CityData(props) {
   const [cityCatData, setCityCatData] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/${props.city}/${props.category}`)
+    fetch(`https://city-mini-guide.onrender.com//${props.city}/${props.category}`)
       .then((res) => res.json())
       .then((data) => setCityCatData(data))
       .catch((e) => console.log(e));

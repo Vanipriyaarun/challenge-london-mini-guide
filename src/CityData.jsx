@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 
-const prefix =
-  process.env.NODE_ENV === "development" ? "http://localhost:5000" : "/";
+// const prefix =
+//   process.env.NODE_ENV === "development" ? "http://localhost:5000" : "/";
 
 function CityData(props) {
   const [cityCatData, setCityCatData] = useState([]);
   useEffect(() => {
-    fetch(`${prefix}/${props.city}/${props.category}`)
+    fetch(`http://localhost:5000/${props.city}/${props.category}`)
       .then((res) => res.json())
       .then((data) => setCityCatData(data))
       .catch((e) => console.log(e));

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import CategoryButton from "./CategoryButton";
 
-let cities = ["Cities", "harrow", "heathrow", "stratford"];
+let cities = ["Cities", "Harrow", "Heathrow", "Stratford"];
 
 function DropdownMenu() {
   const [city, setCity] = useState("");

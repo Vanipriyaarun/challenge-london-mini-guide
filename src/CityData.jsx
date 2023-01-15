@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 const prefix =
-  process.env.NODE_ENV === "development" ? "http://localhost:5000" : "";
+  process.env.NODE_ENV === "development" ? "https://city-mini-guide.onrender.com" : "";
 
 function CityData(props) {
   const [cityCatData, setCityCatData] = useState([]);

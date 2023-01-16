@@ -10,7 +10,7 @@ function CityData(props) {
       .then((res) => res.json())
       .then((data) => setCityCatData(data))
       .catch((e) => console.log(e));
-  }, [cityCatData, props.category, props.city]);
+  }, [props.category, props.city]);
   return (
     <div className="cityData">
       <table className="table table-striped">

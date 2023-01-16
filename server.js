@@ -1,11 +1,17 @@
 const express =require("express");
 const app=express();
 const fs=require("fs");
-const cors=require('cors');
+
 
 const PORT = process.env.PORT || 5000;
 app.use(express.json());
-app.use(cors());
+if(process.env.NODE_ENV==="development"){
+ const cors=require('cors');
+ app.use(cors());
+}else{
+    app.use(express.static('build')); 
+}
+
 // app.use(cors({
 //   origin: 'http://localhost:3000'
 // }));
@@ -29,4 +35,4 @@ app.get("/:city/:category",(req,res)=>{
     res.json(cityData[category]);
 })
 
-app.listen(PORT)
+app.listen(PORT, () => { console.log(process.env.NODE_ENV, ': Listening on port:', PORT); });
